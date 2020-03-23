@@ -3,7 +3,6 @@ package com.mdh.springcloud.controller;
 import com.mdh.springcloud.common.CommonResult;
 import com.mdh.springcloud.entities.Payment;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
