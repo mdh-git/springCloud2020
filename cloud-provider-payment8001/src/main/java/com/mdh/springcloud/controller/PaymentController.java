@@ -20,7 +20,7 @@ public class PaymentController {
 
     /**
      * 查询
-     * http://localhost:8001/payment/get/31
+     * http://localhost:8001/payment/get/1
      *
      * @param id
      * @return
@@ -37,13 +37,13 @@ public class PaymentController {
 
     /**
      * 新增
-     * postman http://localhost:8001/payment/create?serial=atguigu002
+     * postman http://localhost:8001/payment/create?serial=madonghao
      *
      * @param payment
      * @return
      */
     @PostMapping(value = "payment/create")
-    public CommonResult create(@RequestBody Payment payment){
+    public CommonResult<Payment> create(@RequestBody Payment payment){
         int result = paymentService.create(payment);
         log.info("*****插入结果: " + result);
         if (result > 0) {
