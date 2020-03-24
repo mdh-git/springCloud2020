@@ -9,8 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cloud-eureka-server7001</artifactId>
-    <description>eureka服务注册中心的服务端7001</description>
+    <artifactId>cloud-eureka-server7002</artifactId>
+    <description>eureka服务注册中心的服务端7002</description>
 
 
     <dependencies>
