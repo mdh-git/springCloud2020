@@ -5,10 +5,6 @@ eureka:
     # eureka服务端的实例名称
     # 单机 hostname: localhost
     hostname: eureka7001.com #eureka服务端的实例名称
-    # Eureka客户端向服务端发送心跳的时间间隔,单位为秒(默认是30秒)
-    lease-renewal-interval-in-seconds: 1
-    # Eureka服务端在收到最后一次心跳后等待时间上限 ,单位为秒(默认是90秒),超时剔除服务
-    lease-expiration-duration-in-seconds: 2
   client:
     #false标注不向注册中心注册自己
     register-with-eureka: false
