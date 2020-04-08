@@ -2,6 +2,7 @@ package com.mdh.springcloud.controller;
 
 import com.mdh.springcloud.common.CommonResult;
 import com.mdh.springcloud.entities.Payment;
+import com.mdh.springcloud.lb.LoadBalancer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +26,9 @@ public class OrderController {
 
     @Resource
     RestTemplate restTemplate;
+
+    @Resource
+    private LoadBalancer loadBalancer;
 
     /**
      * http://localhost/consumer/payment/create?serial=madonghao
@@ -58,5 +62,7 @@ public class OrderController {
         }
 
     }
+
+
 
 }
