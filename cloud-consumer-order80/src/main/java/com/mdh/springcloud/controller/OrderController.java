@@ -4,11 +4,15 @@ import com.mdh.springcloud.common.CommonResult;
 import com.mdh.springcloud.entities.Payment;
 import com.mdh.springcloud.lb.LoadBalancer;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
+import java.net.URI;
+import java.util.List;
 
 /**
  * @author madonghao
@@ -29,6 +33,9 @@ public class OrderController {
 
     @Resource
     private LoadBalancer loadBalancer;
+
+    @Resource
+    private DiscoveryClient discoveryClient;
 
     /**
      * http://localhost/consumer/payment/create?serial=madonghao
@@ -63,6 +70,17 @@ public class OrderController {
 
     }
 
+    @GetMapping(value = "/consumer/payment/lb")
+    public String getPaymentLB(){
+        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
+        if(instances == null || instances.size() <= 0){
+            return null;
+        }
 
+        ServiceInstance serviceInstance = loadBalancer.instances(instances);
+        URI uri = serviceInstance.getUri();
+
+        return restTemplate.getForObject(uri + "/payment/lb", String.class);
+    }
 
 }
