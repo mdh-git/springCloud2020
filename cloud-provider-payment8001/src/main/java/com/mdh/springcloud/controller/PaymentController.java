@@ -3,6 +3,7 @@ package com.mdh.springcloud.controller;
 import com.mdh.springcloud.common.CommonResult;
 import com.mdh.springcloud.entities.Payment;
 import com.mdh.springcloud.service.PaymentService;
+import io.micrometer.core.instrument.util.TimeUtils;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author madonghao
@@ -84,6 +86,18 @@ public class PaymentController {
 
     @GetMapping(value = "/payment/lb")
     public String getPaymentLB() {
+        return serverPort;
+    }
+
+
+    @GetMapping(value = "/payment/feign/timeout")
+    public String paymentFeignTimeout() {
+        try {
+            // 暂停3秒钟
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return serverPort;
     }
 }

@@ -31,4 +31,12 @@ public class OrderFeignClientController {
         log.info("FeignClient 80 调用成功");
         return paymentFeignService.getPayment(id);
     }
+
+
+    @GetMapping(value = "/consumer/payment/feign/timeout")
+    public String paymentFeignTimeout() {
+        // openfeign-ribbon, 客户端一般默认等待1秒钟
+        log.info("FeignClient 80 超时");
+        return paymentFeignService.paymentFeignTimeout();
+    }
 }
