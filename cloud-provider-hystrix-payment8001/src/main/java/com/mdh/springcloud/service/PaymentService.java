@@ -54,6 +54,8 @@ public class PaymentService {
     //====服务熔断
 
     /**
+     * 在 HystrixCommandProperties 中配置需要的
+     *
      * 在10秒窗口期中10次请求有6次是请求失败的,断路器将起作用
      * @param id
      * @return
