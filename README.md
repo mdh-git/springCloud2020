@@ -60,3 +60,18 @@ AP： DynamoDB
 
 监控8001的路径  http://localhost:8001/actuator/hystrix.stream
 ~~~
+
+## gateway
+~~~
+参考： https://www.jianshu.com/p/18cd9cec3269
+
+          - id: payment_route2
+          # uri: http://localhost:8001
+          uri: lb://cloud-payment-service
+          predicates:
+            Path=/payment/lb/** #断言,路径相匹配的进行路由
+
+刚开始不理解 uri 中为何在服务名称之前加lb://,以为是访问路径http://localhost:9527/payment/lb  最后的lb的意思,
+就去掉前面的lb://,只是用后面的服务名,发现不能使用  查阅资料发现都是这样写的  个人猜测是 是LoadBalancer  负载的意思,
+去找服务名对应的服务负载提供服务
+~~~
