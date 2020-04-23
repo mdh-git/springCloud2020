@@ -5,6 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.config.server.EnableConfigServer;
 
 /**
+ * 设置hosts 参数 127.0.0.1  config-3344.com
+ * http://config-3344.com:3344/application-dev.yml
+ * http://config-3344.com:3344/application-test.yml
+ *
  * @author madonghao
  * @create 2020-04-20 15:53
  **/
