@@ -2,7 +2,10 @@ package com.mdh.springcloud;
 
 import com.mdh.springcloud.dao.StudentDao;
 import com.mdh.springcloud.dao.StudentRepository;
+import com.mdh.springcloud.entities.Fruit;
 import com.mdh.springcloud.entities.Student;
+import com.mdh.springcloud.service.FruitService;
+import com.mdh.springcloud.util.ResourceTransferFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +47,9 @@ public class MongdbApplicationTests {
         Student student = new Student();
         student.setId(2l);
         student.setName("盲僧");
+        student.setAge("21");
+        student.setSex("女");
+        student.setIntroduce("瞎子");
         studentDao.save(student);
     }
 
@@ -102,6 +108,17 @@ public class MongdbApplicationTests {
         List<String> names = Arrays.asList("石头人", "厄加特");
         List<Student> byNameIn = studentRepository.findByNameIn(names);
         System.out.println(byNameIn);
+    }
+
+
+    @Autowired
+    ResourceTransferFactory resourceTransferFactory;
+
+    @Test
+    public void getList(){
+        Integer type = 3;
+        FruitService service = resourceTransferFactory.getService(type);
+        System.out.println(service.getList());
     }
 
 }

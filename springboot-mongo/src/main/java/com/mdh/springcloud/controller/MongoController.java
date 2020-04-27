@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/mongo")
 public class MongoController {
 
+
     @GetMapping("/getMongoDb")
     public String getMongoDb(){
         return "hello mongo";
     }
+
 }
