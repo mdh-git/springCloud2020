@@ -1,0 +1,9 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: mongoDB
+  data:
+    mongodb:
+      host: 10.8.110.11
+      database: mall_test_temp
