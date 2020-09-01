@@ -1,0 +1,7 @@
+server:
+  port: 9528
+spring:
+  application:
+    name: caffeine
+  cache:
+    type: caffeine
